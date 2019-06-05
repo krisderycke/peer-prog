@@ -57,31 +57,36 @@
       var labelInput = document.getElementById("input");
       var labelInput2 = document.getElementById("input2");
 
-      console.log(button);
       button.addEventListener("click", clicky);
 
       function clicky() {
         var inputs = parseInt(labelInput.value) + parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
         console.log("clicky!");
         button.className = "btn btn-success";
-        console.log(button);
+
         setTimeout(reChangeClass, 500); // after 0.5 seconds, the color of the button changes back to its original color
         function reChangeClass() {
           button.className = "btn btn-primary";
-          console.log(button);
 
-          divOutput.innerHTML = divOutput.innerText + " " + inputs; // use value to copy context to the div's content
+          if (Number.isNaN(inputs)) {
+            //Number.isNan used to check if the sum is a number or not
+            alert("alarm");
+          } else {
+            divOutput.innerHTML = divOutput.innerText + " " + inputs;
+          }
         }
+        // use value to copy context to the div's content
+
         spin(); //calls the function spin() which can be declared at the bottom
         setTimeout(stopSpin, 500);
-      }
 
-      function spin() {
-        button.innerHTML =
-          ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
-      }
-      function stopSpin() {
-        button.innerHTML = "Calculate!"; // make the spinner stop after 0.5seconds
+        function spin() {
+          button.innerHTML =
+            ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
+        }
+        function stopSpin() {
+          button.innerHTML = "Calculate!"; // make the spinner stop after 0.5seconds
+        }
       }
     </script>
   </body>
