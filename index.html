@@ -27,6 +27,12 @@
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
           <!-- Start writing content here -->
           <input type="text" name="" id="input" />
+          <select id="select">
+            <option value="plus">+</option>
+            <option value="minus">-</option>
+            <option value="multply">*</option>
+            <option value="divide">/</option>
+          </select>
           <input type="text" name="" id="input2" /> <br />
           <br />
           <button id="btn" class="btn btn-primary">
@@ -70,7 +76,7 @@
 
           if (Number.isNaN(inputs)) {
             //Number.isNan used to check if the sum is a number or not
-            alert("alarm");
+            alert("fill in all the fields");
           } else {
             divOutput.innerHTML = divOutput.innerText + " " + inputs;
           }
