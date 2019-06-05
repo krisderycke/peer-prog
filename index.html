@@ -27,10 +27,12 @@
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
           <!-- Start writing content here -->
           <input type="text" name="" id="input" />
+          <input type="text" name="" id="input2" /> <br />
+          <br />
           <button id="btn" class="btn btn-primary">
             Calculate!
           </button>
-          <div id="div" class="bordertje">...</div>
+          <div id="div" class="bordertje">Here is your result:</div>
         </div>
       </div>
     </div>
@@ -53,6 +55,7 @@
       var button = document.getElementById("btn");
       var divOutput = document.getElementById("div");
       var labelInput = document.getElementById("input");
+      var labelInput2 = document.getElementById("input2");
       console.log(button);
       button.addEventListener("click", clicky);
 
@@ -65,8 +68,7 @@
           button.className = "btn btn-primary";
           console.log(button);
 
-          divOutput.innerHTML = labelInput.value; // use value to copy context to the div's content
-          alert("Here is your number: " + labelInput.value);
+          divOutput.innerHTML = divOutput.innerText + " " + labelInput.value; // use value to copy context to the div's content
         }
         spin(); //calls the function spin() which can be declared at the bottom
         setTimeout(stopSpin, 500);
