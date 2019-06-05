@@ -57,15 +57,20 @@
         button.className = "btn btn-success";
         console.log(button);
         setTimeout(reChangeClass, 500);
-        spin(); //calls the function spin() which can be declared at the bottom
         function reChangeClass() {
           button.className = "btn btn-primary";
           console.log(button);
         }
+        spin(); //calls the function spin() which can be declared at the bottom
+        setTimeout(stopSpin, 500);
       }
 
       function spin() {
-        button.innerHTML = ' <i class="fas fa-spinner fa-spin"></i> Calculate';
+        button.innerHTML =
+          ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
+      }
+      function stopSpin() {
+        button.innerHTML = "Calculate"; // make the spinner stop after 0.5seconds
       }
     </script>
   </body>
