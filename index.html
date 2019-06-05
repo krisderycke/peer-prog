@@ -26,9 +26,11 @@
       <div class="row">
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
           <!-- Start writing content here -->
+          <input type="text" name="" id="input" />
           <button id="btn" class="btn btn-primary">
-            Calculate
+            Calculate!
           </button>
+          <div id="div" class="bordertje">...</div>
         </div>
       </div>
     </div>
@@ -49,6 +51,8 @@
     <script>
       /** Write your javascript code here **/
       var button = document.getElementById("btn");
+      var divOutput = document.getElementById("div");
+      var labelInput = document.getElementById("input");
       console.log(button);
       button.addEventListener("click", clicky);
 
@@ -56,10 +60,12 @@
         console.log("clicky!");
         button.className = "btn btn-success";
         console.log(button);
-        setTimeout(reChangeClass, 500);
+        setTimeout(reChangeClass, 500); // after 0.5 seconds, the color of the button changes back to its original color
         function reChangeClass() {
           button.className = "btn btn-primary";
           console.log(button);
+
+          divOutput.innerHTML = labelInput.value; // use value to copy context to the div's content
         }
         spin(); //calls the function spin() which can be declared at the bottom
         setTimeout(stopSpin, 500);
@@ -70,7 +76,7 @@
           ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
       }
       function stopSpin() {
-        button.innerHTML = "Calculate"; // make the spinner stop after 0.5seconds
+        button.innerHTML = "Calculate!"; // make the spinner stop after 0.5seconds
       }
     </script>
   </body>
