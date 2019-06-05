@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Fix me!</title>
+    <title>Peer-prog</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -56,10 +56,12 @@
       var divOutput = document.getElementById("div");
       var labelInput = document.getElementById("input");
       var labelInput2 = document.getElementById("input2");
+
       console.log(button);
       button.addEventListener("click", clicky);
 
       function clicky() {
+        var inputs = parseInt(labelInput.value) + parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
         console.log("clicky!");
         button.className = "btn btn-success";
         console.log(button);
@@ -68,7 +70,7 @@
           button.className = "btn btn-primary";
           console.log(button);
 
-          divOutput.innerHTML = divOutput.innerText + " " + labelInput.value; // use value to copy context to the div's content
+          divOutput.innerHTML = divOutput.innerText + " " + inputs; // use value to copy context to the div's content
         }
         spin(); //calls the function spin() which can be declared at the bottom
         setTimeout(stopSpin, 500);
