@@ -26,14 +26,14 @@
       <div class="row">
         <div class="col-12 bg-white shadow-sm p-4 mx-auto mt-4 border">
           <!-- Start writing content here -->
-          <input type="text" name="" id="input" />
+          <input type="text" name="" id="input" required />
           <select id="select">
             <option id="plus" value="plus">+</option>
             <option id="minus" value="minus">-</option>
             <option id="multiply" value="multply">*</option>
             <option id="divide" value="divide">/</option>
           </select>
-          <input type="text" name="" id="input2" /> <br />
+          <input type="text" name="" id="input2" required /> <br />
           <br />
           <button id="btn" class="btn btn-primary">
             Calculate!
@@ -66,7 +66,9 @@
       button.addEventListener("click", clicky);
 
       function clicky() {
-        var inputs = parseInt(labelInput.value) + parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
+        var number1 = parseInt(labelInput.value);
+        var number2 = parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
+        var inputs = number1 + number2;
         console.log("clicky!");
         button.className = "btn btn-success";
 
@@ -76,7 +78,7 @@
 
           if (Number.isNaN(inputs)) {
             //Number.isNan used to check if the sum is a number or not
-            alert("fill in all the fields");
+            alert("fill in all the fields"); //starting functions to calculate via selected items using else if:
           } else {
             divOutput.innerHTML = divOutput.innerText + " " + inputs;
           }
