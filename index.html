@@ -28,10 +28,10 @@
           <!-- Start writing content here -->
           <input type="text" name="" id="input" required />
           <select id="select">
-            <option id="plus" value="plus">+</option>
-            <option id="minus" value="minus">-</option>
-            <option id="multiply" value="multply">*</option>
-            <option id="divide" value="divide">/</option>
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
           </select>
           <input type="text" name="" id="input2" required /> <br />
           <br />
@@ -58,17 +58,21 @@
 
     <script>
       /** Write your javascript code here **/
-      var button = document.getElementById("btn");
-      var divOutput = document.getElementById("div");
-      var labelInput = document.getElementById("input");
-      var labelInput2 = document.getElementById("input2");
+      const button = document.getElementById("btn");
+      const divOutput = document.getElementById("div");
+      const labelInput = document.getElementById("input");
+      const labelInput2 = document.getElementById("input2");
 
       button.addEventListener("click", clicky);
 
       function clicky() {
-        var number1 = parseInt(labelInput.value);
-        var number2 = parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
-        var inputs = number1 + number2;
+        let number1 = parseInt(labelInput.value); //use value to copy context to the div's content
+        let number2 = parseInt(labelInput2.value); //parsInt gebruikt om van de string een nummer te maken;value gebruikt om de ingevoerde tekst te kunnen gebruiken
+        let inputAdd = number1 + number2;
+        let inputSub = number1 - number2;
+        let inputMulti = number1 * number2;
+        let inputDivide = number1 / number2;
+
         console.log("clicky!");
         button.className = "btn btn-success";
 
@@ -76,26 +80,35 @@
         function reChangeClass() {
           button.className = "btn btn-primary";
 
-          if (Number.isNaN(inputs)) {
-            //Number.isNan used to check if the sum is a number or not
-            alert("fill in all the fields"); //starting functions to calculate via selected items using else if:
-          } else {
-            divOutput.innerHTML = divOutput.innerText + " " + inputs;
+          spin(); //calls the function spin() which can be declared at the bottom
+          setTimeout(stopSpin, 500);
+
+          function spin() {
+            button.innerHTML =
+              ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
+          }
+          function stopSpin() {
+            button.innerHTML = "Calculate!"; // make the spinner stop after 0.5seconds
+          }
+
+          function calculator() {
+            // var plus = document.getElementById("plus");
+            // var min = document.getElementById("minus");
+            // var multi = document.getElementById("multiply");
+            // var divide = document.getElementById("divide");
+            let a = document.querySelector("#select").value;
+
+            if (Number.isNaN(inputSub, inputAdd, inputDivide, inputMulti)) {
+              //Number.isNan used to check if the sum is a number or not
+              alert("fill in all the fields");
+            } else if (a === "+") {
+              divOutput.innerHTML = divOutput.innerText + " " + inputAdd;
+            } else if (a === "-") {
+              divOutput.innerHTML = divOutput.innerText + " " + inputSub;
+            }
           }
         }
-        // use value to copy context to the div's content
-
-        spin(); //calls the function spin() which can be declared at the bottom
-        setTimeout(stopSpin, 500);
-
-        function spin() {
-          button.innerHTML =
-            ' <i class="fas fa-spinner fa-spin"></i> Calculating...';
-        }
-        function stopSpin() {
-          button.innerHTML = "Calculate!"; // make the spinner stop after 0.5seconds
-        }
-      } //this bracket closes the "onclick" event, leave it here!
+      } //this bracket closes the "onclick" event, leave it here
     </script>
   </body>
 </html>
